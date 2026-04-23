@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CompareHub - Comparisons Management</title>
+<!-- Google Fonts: Space Grotesk for headings/labels, Inter for body/code -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed": "#ffdbd1",
+                        "tertiary-container": "#ac620e",
+                        "on-background": "#1b1b1b",
+                        "secondary-fixed-dim": "#ccc7b1",
+                        "on-secondary-fixed-variant": "#4a4737",
+                        "on-tertiary-fixed": "#2e1500",
+                        "secondary": "#625f4d",
+                        "outline-variant": "#e5beb3",
+                        "secondary-fixed": "#e8e3cc",
+                        "on-secondary-container": "#686553",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed-variant": "#852300",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "inverse-primary": "#ffb59f",
+                        "surface-tint": "#af3100",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "secondary-container": "#e8e3cc",
+                        "on-primary-fixed": "#3a0a00",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#8b4c00",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-fixed-dim": "#ffb59f",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb779",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#917066",
+                        "on-surface-variant": "#5c4038",
+                        "inverse-on-surface": "#f1f1f1",
+                        "background": "#f9f9f9",
+                        "primary-container": "#d53d00",
+                        "on-surface": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "primary": "#aa2f00",
+                        "on-secondary-fixed": "#1e1c0e",
+                        "inverse-surface": "#303030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "2xl": "128px",
+                        "xl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["inter"],
+                        "label": ["spaceGrotesk"],
+                        "body-md": ["inter"],
+                        "h2": ["spaceGrotesk"],
+                        "h1": ["spaceGrotesk"],
+                        "h3": ["spaceGrotesk"],
+                        "code": ["inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "500" }],
+                        "code": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-bright text-on-background font-body-md antialiased min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Global Layout Shell -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r border-zinc-200 dark:border-zinc-800 bg-[#F9F3DC] dark:bg-zinc-950 font-['Space_Grotesk'] text-sm tracking-tight z-50">
+<!-- Header -->
+<div class="px-6 py-8 flex flex-col gap-2 border-b border-zinc-200 dark:border-zinc-800">
+<div aria-label="Organization Logo" class="w-8 h-8 bg-black rounded-DEFAULT flex items-center justify-center mb-2" role="img">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter text-black dark:text-white uppercase">CompareHub</h1>
+<p class="text-xs text-zinc-500 uppercase tracking-widest">Research Systems</p>
+</div>
+<!-- Tabs -->
+<div class="flex-1 overflow-y-auto py-6 flex flex-col gap-1 px-2">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Projects -->
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[20px]">folder</span>
+<span>Projects</span>
+</a>
+<!-- Bookmarks -->
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span>Bookmarks</span>
+</a>
+<!-- Insights -->
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+<span>Insights</span>
+</a>
+<!-- Comparisons (ACTIVE) -->
+<a class="flex items-center gap-3 text-black dark:text-white font-bold border-l-2 border-[#FF500F] bg-white/50 dark:bg-zinc-900/50 px-4 py-3 scale-98 active:opacity-80 transition-all rounded-r-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">compare_arrows</span>
+<span>Comparisons</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="p-6 mt-auto border-t border-zinc-200 dark:border-zinc-800">
+<button class="w-full bg-black text-white hover:bg-zinc-800 transition-colors scale-98 active:opacity-80 font-bold py-3 px-4 rounded-DEFAULT flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Comparison
+                </button>
+</div>
+</nav>
+<!-- Main Content Area Wrapper -->
+<div class="flex-1 flex flex-col ml-64 overflow-hidden relative">
+<!-- TopAppBar (Shared Component) -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-12 py-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 font-['Space_Grotesk'] text-xs font-medium uppercase tracking-widest">
+<!-- Left: Search (Implied by search_bar: "on_left") -->
+<div class="flex-1 flex items-center max-w-md">
+<div class="relative w-full flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-zinc-400 text-[18px]">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-black dark:text-white placeholder:text-zinc-400 pl-10 py-2 text-xs uppercase tracking-widest outline-none" placeholder="SEARCH REPOSITORY..." type="text"/>
+</div>
+</div>
+<!-- Center: Navigation Links -->
+<div class="flex items-center gap-8 justify-center">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors opacity-90 hover:opacity-100 cursor-pointer pb-4 -mb-4 pt-4" href="#">Active Projects</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors opacity-90 hover:opacity-100 cursor-pointer pb-4 -mb-4 pt-4" href="#">Global Metrics</a>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex-1 flex items-center justify-end gap-6">
+<button class="text-zinc-500 hover:text-black transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+<span>Share Analysis</span>
+</button>
+<button class="text-zinc-500 hover:text-black transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export</span>
+</button>
+<div class="h-4 w-px bg-zinc-200"></div>
+<div class="flex items-center gap-4 text-zinc-500">
+<button class="hover:text-black transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-black transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-zinc-200 overflow-hidden ml-2 border border-zinc-300">
+<!-- Placeholder for profile image -->
+<div class="w-full h-full bg-zinc-300 flex items-center justify-center text-zinc-500">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas (Main Scrollable Content) -->
+<main class="flex-1 overflow-y-auto overflow-x-hidden p-xl">
+<div class="max-w-[1440px] mx-auto w-full flex flex-col gap-lg">
+<!-- Page Header & Toolbar -->
+<div class="flex flex-col gap-md mb-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-h1 text-h1 text-on-background mb-unit">Saved Comparisons</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Access, analyze, and continue evaluation across all configured project vectors.</p>
+</div>
+<!-- Control Bar -->
+<div class="flex items-center gap-sm">
+<div class="flex items-center bg-surface-container-lowest border border-surface-variant rounded px-3 py-2">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-[18px]">filter_list</span>
+<select class="bg-transparent border-none text-sm font-label text-label text-on-background focus:ring-0 outline-none uppercase p-0 cursor-pointer pr-6">
+<option>All Projects</option>
+<option>AI Research</option>
+<option>Infrastructure</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container-lowest border border-surface-variant rounded px-3 py-2">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-[18px]">sort</span>
+<select class="bg-transparent border-none text-sm font-label text-label text-on-background focus:ring-0 outline-none uppercase p-0 cursor-pointer pr-6">
+<option>Last Modified</option>
+<option>Alphabetical</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(200px,auto)]">
+<!-- Featured / Priority Card (Spans more columns) -->
+<div class="col-span-1 md:col-span-12 lg:col-span-8 bg-surface-container-lowest border border-surface-variant rounded-lg p-8 flex flex-col justify-between group hover:border-primary-fixed-dim transition-colors cursor-pointer relative overflow-hidden">
+<!-- Decorative background accent -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+<div class="flex justify-between items-start z-10">
+<div class="flex flex-col gap-3">
+<span class="inline-flex items-center px-2 py-1 bg-surface-container-low text-on-surface-variant font-label text-[10px] uppercase tracking-widest rounded border border-surface-variant w-fit">
+                                        Active Evaluation
+                                    </span>
+<h3 class="font-h2 text-h2 text-on-background">Q3 Enterprise LLM Performance Matrix</h3>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">folder</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Project: <span class="text-on-background font-medium">Core AI R&amp;D</span></span>
+</div>
+</div>
+</div>
+<button class="w-10 h-10 rounded border border-surface-variant flex items-center justify-center text-on-surface-variant hover:text-on-background hover:bg-surface-container-low transition-colors z-10">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="mt-8 z-10 grid grid-cols-3 gap-6 pt-6 border-t border-surface-variant/50">
+<div class="flex flex-col gap-1">
+<span class="font-label text-label text-on-surface-variant uppercase">Models Compared</span>
+<span class="font-code text-[24px] font-medium text-on-background">12</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-label text-on-surface-variant uppercase">Data Points</span>
+<span class="font-code text-[24px] font-medium text-on-background">1,450</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-label text-on-surface-variant uppercase">Last Update</span>
+<span class="font-body-md text-[14px] text-on-background pt-1">2 hours ago</span>
+</div>
+</div>
+</div>
+<!-- Secondary Card -->
+<div class="col-span-1 md:col-span-6 lg:col-span-4 bg-surface-container-lowest border border-surface-variant rounded-lg p-6 flex flex-col justify-between group hover:border-outline transition-colors cursor-pointer">
+<div class="flex flex-col gap-3">
+<h4 class="font-h3 text-h3 text-on-background leading-tight">Vector Database Scalability Test</h4>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Infrastructure</span>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-end border-t border-surface-variant/50 pt-4">
+<div class="flex flex-col gap-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Options</span>
+<span class="font-code text-[16px] text-on-background">4</span>
+</div>
+<span class="font-body-md text-[12px] text-on-surface-variant">Yesterday</span>
+</div>
+</div>
+<!-- Grid Card 3 -->
+<div class="col-span-1 md:col-span-6 lg:col-span-4 bg-surface-container-lowest border border-surface-variant rounded-lg p-6 flex flex-col justify-between group hover:border-outline transition-colors cursor-pointer">
+<div class="flex flex-col gap-3">
+<h4 class="font-h3 text-h3 text-on-background leading-tight">Cloud Provider Cost Analysis Q4</h4>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Procurement</span>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-end border-t border-surface-variant/50 pt-4">
+<div class="flex flex-col gap-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Options</span>
+<span class="font-code text-[16px] text-on-background">6</span>
+</div>
+<span class="font-body-md text-[12px] text-on-surface-variant">Oct 12, 2023</span>
+</div>
+</div>
+<!-- Grid Card 4 -->
+<div class="col-span-1 md:col-span-6 lg:col-span-4 bg-surface-container-lowest border border-surface-variant rounded-lg p-6 flex flex-col justify-between group hover:border-outline transition-colors cursor-pointer">
+<div class="flex flex-col gap-3">
+<h4 class="font-h3 text-h3 text-on-background leading-tight">Authentication Provider Matrix</h4>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-primary-fixed-variant"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Security Team</span>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-end border-t border-surface-variant/50 pt-4">
+<div class="flex flex-col gap-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Options</span>
+<span class="font-code text-[16px] text-on-background">5</span>
+</div>
+<span class="font-body-md text-[12px] text-on-surface-variant">Oct 08, 2023</span>
+</div>
+</div>
+<!-- Grid Card 5 (Add new empty state style) -->
+<div class="col-span-1 md:col-span-6 lg:col-span-4 border border-dashed border-surface-variant rounded-lg p-6 flex flex-col items-center justify-center text-center gap-4 hover:border-on-surface-variant transition-colors cursor-pointer bg-surface-bright/50">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">add</span>
+</div>
+<div>
+<h4 class="font-label text-label text-on-background mb-1">Create Blank Matrix</h4>
+<p class="font-body-md text-[12px] text-on-surface-variant">Start a new evaluation from scratch.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

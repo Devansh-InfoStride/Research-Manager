@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Notes &amp; Insights - CompareHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed": "#ffdbd1",
+                        "tertiary-container": "#ac620e",
+                        "on-background": "#1b1b1b",
+                        "secondary-fixed-dim": "#ccc7b1",
+                        "on-secondary-fixed-variant": "#4a4737",
+                        "on-tertiary-fixed": "#2e1500",
+                        "secondary": "#625f4d",
+                        "outline-variant": "#e5beb3",
+                        "secondary-fixed": "#e8e3cc",
+                        "on-secondary-container": "#686553",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed-variant": "#852300",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc1",
+                        "inverse-primary": "#ffb59f",
+                        "surface-tint": "#af3100",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "secondary-container": "#e8e3cc",
+                        "on-primary-fixed": "#3a0a00",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#8b4c00",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-fixed-dim": "#ffb59f",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb779",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#917066",
+                        "on-surface-variant": "#5c4038",
+                        "inverse-on-surface": "#f1f1f1",
+                        "background": "#f9f9f9",
+                        "primary-container": "#d53d00",
+                        "on-surface": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "primary": "#aa2f00",
+                        "on-secondary-fixed": "#1e1c0e",
+                        "inverse-surface": "#303030"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "2xl": "128px",
+                        "xl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "32px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "h2": ["Space Grotesk", "sans-serif"],
+                        "h1": ["Space Grotesk", "sans-serif"],
+                        "h3": ["Space Grotesk", "sans-serif"],
+                        "code": ["Inter", "monospace"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "h2": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "500" }],
+                        "h1": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "h3": ["24px", { lineHeight: "1.3", letterSpacing: "0", fontWeight: "500" }],
+                        "code": ["14px", { lineHeight: "1.5", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F9F3DC] text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col w-64 border-r border-zinc-200 dark:border-zinc-800 bg-[#F9F3DC] dark:bg-zinc-950 z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold font-h3">C</div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-black dark:text-white uppercase font-h3 text-h3 leading-none">CompareHub</h1>
+<p class="font-label text-label text-zinc-500 uppercase mt-1">Research Systems</p>
+</div>
+</div>
+<button class="w-full bg-black text-white font-label text-label py-3 px-4 rounded hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 mb-8">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+                New Comparison
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1 font-['Space_Grotesk'] text-sm tracking-tight">
+<li>
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-black dark:text-white font-bold border-l-2 border-[#FF500F] bg-white/50 dark:bg-zinc-900/50 px-4 py-3 scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder</span>
+                        Projects
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+                        Bookmarks
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">lightbulb</span>
+                        Insights
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">compare_arrows</span>
+                        Comparisons
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen bg-surface-bright">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-12 py-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 font-['Space_Grotesk'] text-xs font-medium uppercase tracking-widest text-black dark:text-white">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full border border-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label font-label p-0 w-48 text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors opacity-90 hover:opacity-100 cursor-pointer" href="#">Active Projects</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors opacity-90 hover:opacity-100 cursor-pointer" href="#">Global Metrics</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-transparent border border-black px-4 py-1.5 rounded hover:bg-black hover:text-white transition-colors opacity-90 hover:opacity-100 cursor-pointer text-label font-label">Export</button>
+<button class="bg-black text-white px-4 py-1.5 rounded hover:bg-zinc-800 transition-colors opacity-90 hover:opacity-100 cursor-pointer text-label font-label">Share Analysis</button>
+<div class="flex items-center gap-3 border-l border-zinc-200 pl-6 ml-2">
+<button class="text-zinc-500 hover:text-black transition-colors opacity-90 hover:opacity-100 cursor-pointer"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span></button>
+<button class="text-zinc-500 hover:text-black transition-colors opacity-90 hover:opacity-100 cursor-pointer"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span></button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-surface-dim">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close up professional headshot of a woman with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyeISy93NkMqJqniQw4zhFHXdWmiHVCV7GXvFNsw3zzDeiIyZw_t-4a0-XdtGiFFeeqR_jZzOx8V7E1vv_tZH-3KV0SF7FS8-BNPrrd_ehY3GPJacbcJrAgm8_3fgUuy3LiQcABb53LXTpbjJ2ol0vzohMZZKcr9x1ctFiD8fys8yNssDmzNPKdHVmABC_8nsrVEqioo8ZEKZQ-LD_T4MQDXzDa_lbCAfziPZe1BI2YlKn9Re357kI8LPQcP8VtKa0PSQrZR5QzQM"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Project Workspace Content -->
+<main class="flex-1 p-xl max-w-container-max mx-auto w-full">
+<!-- Project Header & Tabs -->
+<div class="mb-lg">
+<div class="flex items-center gap-2 text-on-surface-variant font-label text-label uppercase mb-4">
+<a class="hover:text-primary transition-colors" href="#">Projects</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Hardware</span>
+</div>
+<h2 class="font-h1 text-h1 text-on-surface mb-6">Best Laptop under 1L</h2>
+<div class="flex border-b border-surface-variant">
+<a class="px-6 py-3 font-label text-label uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#">Data View</a>
+<a class="px-6 py-3 font-label text-label uppercase text-primary border-b-2 border-primary" href="#">Notes &amp; Insights</a>
+<a class="px-6 py-3 font-label text-label uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sources</a>
+</div>
+</div>
+<!-- Bento Grid Layout for Notes -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Main Editor Area (8 cols) -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<!-- Structured Note Block -->
+<div class="bg-white border border-surface-variant rounded p-lg">
+<div class="flex justify-between items-center mb-6 border-b border-surface-variant pb-4">
+<h3 class="font-h3 text-h3 text-on-surface">Performance Analysis</h3>
+<span class="font-label text-label text-on-surface-variant uppercase bg-surface-container px-2 py-1 rounded">Last edited 2h ago</span>
+</div>
+<!-- Rich Text Content Area -->
+<div class="prose prose-zinc max-w-none font-body-md text-body-md text-on-surface space-y-4">
+<p>After reviewing the benchmarks for the M2 Air and the XPS 13, the thermal throttling on the XPS during sustained loads is a significant concern for our compiling workflows.</p>
+<ul class="list-disc pl-5 space-y-2">
+<li><strong>M2 Air:</strong> Fanless design maintains 90% peak performance even after 30 mins of load.</li>
+<li><strong>XPS 13:</strong> Drops to 65% base clock after 15 mins due to thermal constraints.</li>
+</ul>
+<p>For purely administrative tasks, the difference is negligible, but for the engineering team, the sustained performance is critical.</p>
+</div>
+</div>
+<!-- Editor Toolbar (Mockup) -->
+<div class="bg-white border border-surface-variant rounded p-4 flex gap-4 items-center">
+<div class="flex gap-2 border-r border-surface-variant pr-4">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md p-0 placeholder:text-on-surface-variant/50" placeholder="Add a new insight..." type="text"/>
+<button class="bg-black text-white px-4 py-2 rounded font-label text-label uppercase hover:bg-zinc-800 transition-colors">Save</button>
+</div>
+</div>
+<!-- Sidebar / Meta (4 cols) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Final Decision Callout -->
+<div class="bg-surface-bright border border-primary/30 rounded p-6 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#FF500F]"></div>
+<h3 class="font-label text-label uppercase text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                            Final Decision
+                        </h3>
+<div class="font-h2 text-h2 text-on-surface mb-4">MacBook Air M2</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Selected for superior battery life and sustained performance without thermal throttling.</p>
+<div class="flex gap-2">
+<span class="bg-surface-container px-3 py-1 rounded font-label text-label uppercase text-on-surface">16GB RAM</span>
+<span class="bg-surface-container px-3 py-1 rounded font-label text-label uppercase text-on-surface">512GB SSD</span>
+</div>
+</div>
+<!-- Tags & Meta -->
+<div class="bg-white border border-surface-variant rounded p-6">
+<h3 class="font-label text-label uppercase text-on-surface-variant mb-4">Project Meta</h3>
+<div class="space-y-4">
+<div>
+<span class="block font-label text-label text-on-surface-variant uppercase mb-2">Key Criteria</span>
+<div class="flex flex-wrap gap-2">
+<span class="border border-surface-variant px-2 py-1 rounded font-label text-label text-on-surface">Battery Life</span>
+<span class="border border-surface-variant px-2 py-1 rounded font-label text-label text-on-surface">Build Quality</span>
+<span class="border border-surface-variant px-2 py-1 rounded font-label text-label text-on-surface">Thermals</span>
+</div>
+</div>
+<div>
+<span class="block font-label text-label text-on-surface-variant uppercase mb-2">Contributors</span>
+<div class="flex -space-x-2">
+<img alt="Contributor" class="w-8 h-8 rounded-full border-2 border-white" data-alt="professional headshot profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxhgjbnZrW30OHDnMkd6fgKwH8g2XwZt9KZ8TXPw7ntLueQedEDfKOyw3RNOiyEadKOaLFljVpDeQm-RLMI-Q48tR-KibjYPN5M3_6Ti1tfl8Sn7WAAUwo4cenP_-Bxbg1--L_CuhP_3ny3yfYSLh5nWyuAQvdMowhw3B_UrHtgJa3rswRs6oaGY35yhLxan-ccirY8EqA_RMLXS_5tztt6LZhAKAwTIv206ki4C4R8WlsQ1VUtdnQlpJQrbR3D8zk6eTUBOBnv_I"/>
+<img alt="Contributor" class="w-8 h-8 rounded-full border-2 border-white" data-alt="professional headshot profile picture male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ_96BD5AAiyAjR0CHdHw8a8VDKYFbahdoNGnX09hGQ8H9VsHpVfvuBQKvoIs4wvw7qa7VISE1WsDfvpYXkXIAd1srg-TrTdGV6QCB1IZWgfiZYRGWIdyrAIU_xXoB4ko0s5olHbBJ0Pi0gZZTUNZmjC9sipm9rcLVhX4XPfm9QH73rq6LAAplkKYwIfCox0PDgk-_i-vDtyv0Uj3KcEkcLWN1H7nGK0p4ayeCwUdOlFFGh-sgWEqL0_J4fOxfjmhT7FjMcmoOFQQ"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center font-label text-[10px] text-on-surface">+2</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

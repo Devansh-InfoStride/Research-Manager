@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Workspace - CompareHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1e1c0e",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-fixed": "#ffdbd1",
+                        "tertiary-fixed": "#ffdcc1",
+                        "primary-container": "#d53d00",
+                        "on-secondary": "#ffffff",
+                        "primary": "#aa2f00",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1b1b1b",
+                        "inverse-surface": "#303030",
+                        "background": "#f9f9f9",
+                        "tertiary-container": "#ac620e",
+                        "tertiary": "#8b4c00",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-container": "#fffbff",
+                        "on-background": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed": "#e8e3cc",
+                        "secondary": "#625f4d",
+                        "secondary-container": "#e8e3cc",
+                        "inverse-primary": "#ffb59f",
+                        "outline-variant": "#e5beb3",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#3a0a00",
+                        "outline": "#917066",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface-variant": "#5c4038",
+                        "secondary-fixed-dim": "#ccc7b1",
+                        "tertiary-fixed-dim": "#ffb779",
+                        "on-secondary-container": "#686553",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2e1500",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#4a4737",
+                        "on-primary-fixed-variant": "#852300",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed-dim": "#ffb59f",
+                        "surface-tint": "#af3100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "2xl": "128px",
+                        "sm": "8px",
+                        "container-max": "1440px",
+                        "lg": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Space Grotesk", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "h3": ["Space Grotesk", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "h1": ["Space Grotesk", "sans-serif"],
+                        "code": ["Inter", "monospace"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F9F3DC; }
+    </style>
+</head>
+<body class="text-on-surface antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-[#F9F3DC] text-black font-['Space_Grotesk'] text-sm tracking-tight h-screen w-64 border-r border-zinc-200 border-r border-zinc-200 fixed left-0 top-0 h-full flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 rounded bg-black flex items-center justify-center text-white font-bold text-lg">
+                    C
+                </div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-black uppercase">CompareHub</h1>
+<p class="text-zinc-500 text-xs">Research Systems</p>
+</div>
+</div>
+<button class="w-full bg-[#FF500F] text-white py-2 px-4 rounded font-bold hover:bg-[#d53d00] transition-colors mb-8 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Comparison
+            </button>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 text-zinc-500 px-4 py-3 hover:bg-zinc-100 transition-colors rounded" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-black font-bold border-l-2 border-[#FF500F] bg-white/50 px-4 py-3 scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder</span>
+                        Projects
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-zinc-500 px-4 py-3 hover:bg-zinc-100 transition-colors rounded" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+                        Bookmarks
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-zinc-500 px-4 py-3 hover:bg-zinc-100 transition-colors rounded" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">compare_arrows</span>
+                        Comparisons
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto p-6 border-t border-zinc-200">
+<div class="flex items-center gap-3">
+<img alt="Organization Logo" class="w-8 h-8 rounded-full border border-zinc-200" data-alt="Small round avatar image of a user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKV-pBgTJbFRl4d8P9oLQnyOvWSx-hhusy2-YknhJCUgVN33GNmG-rR-nWmDCWfWGBQnhylcbEUOq0iuhm8FIW_k4rOZCH8dw5xsBIBQstv9JzaXIhj6yU645f7f0o-5l5PXvQWaIr6hAKGJBAjVkElnQ1bytdm4dT_L71L78FHXuSq1kEKqy-iEq9WdjrWELLWhSCjIb7tWhFevDsP12z9yhYNdSbRoqWrMwWW-HLSRqSoVN4VCjSLsWhdZfXFv0gRv8fv1k1igk"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-black truncate">Researcher 01</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-64 h-screen bg-surface">
+<!-- TopAppBar -->
+<header class="bg-white/80 backdrop-blur-md text-black font-['Space_Grotesk'] text-xs font-medium uppercase tracking-widest docked full-width top-0 border-b border-zinc-200 hair-line border-b border-zinc-200 sticky top-0 z-40 flex justify-between items-center px-12 py-3">
+<div class="flex items-center gap-6">
+<!-- Search -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-transparent border border-zinc-200 rounded text-black text-xs font-['Space_Grotesk'] uppercase placeholder:text-zinc-400 focus:outline-none focus:border-black w-64 transition-colors" placeholder="Search workspace..." type="text"/>
+</div>
+<!-- Nav Links -->
+<nav class="hidden md:flex gap-6">
+<a class="text-[#FF500F] border-b border-[#FF500F] py-1 opacity-90 hover:opacity-100 cursor-pointer" href="#">Active Projects</a>
+<a class="text-zinc-500 hover:text-black transition-colors py-1 opacity-90 hover:opacity-100 cursor-pointer" href="#">Global Metrics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-black hover:text-[#FF500F] transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">share</span>
+                    Share Analysis
+                </button>
+<button class="text-black hover:text-[#FF500F] transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export
+                </button>
+<div class="h-4 w-px bg-zinc-200 mx-2"></div>
+<button class="text-zinc-500 hover:text-black transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-zinc-500 hover:text-black transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile" class="w-7 h-7 rounded-full border border-zinc-200 ml-2 cursor-pointer" data-alt="Small round avatar image of a user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVNPLaQAhBcnWPAgQKZMoK9WCvVDb61ONztnZoKuM8PyFTS3q2BBCsIZDJ2Wg403PWyTaK9JaoeGN8l8uJMUat5yzi_2QQnAvU6d_Wo7tS1RWTSdStSgNus4usOdXgGKRJscKBm76oMtiOrEtQeGcmDldxuhPFtAuusVbTc0mlETSWSTtrHiWt1O7A3JWhZBfODCwEWxoWlCVGk8zWyP4_XWiS884sqRjgQPySHkRJepQ34rybHIbV27oYZxm1gLr__LPicMXVT7U"/>
+</div>
+</header>
+<!-- Project Canvas -->
+<main class="flex-1 overflow-y-auto p-12">
+<div class="max-w-[1200px] mx-auto">
+<!-- Project Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 text-zinc-500 text-xs font-label uppercase tracking-widest mb-4">
+<a class="hover:text-black transition-colors" href="#">Projects</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-black">Best Laptop under 1L</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-h1 text-h1 text-black mb-2">Best Laptop under 1L</h1>
+<p class="font-body-lg text-body-lg text-zinc-600 max-w-2xl">Compiling options for high-performance laptops suitable for development and light gaming within a 1 Lakh INR budget.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant font-label text-label rounded border border-zinc-200 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">update</span> Active
+                            </span>
+<span class="px-3 py-1 bg-zinc-100 text-black font-label text-label rounded border border-zinc-200 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder_open</span> 12 Items
+                            </span>
+</div>
+</div>
+</div>
+<!-- Workspace Tabs -->
+<div class="border-b border-zinc-200 mb-8 flex gap-8">
+<a class="pb-3 text-black font-label text-label uppercase tracking-widest border-b-2 border-black flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bookmarks</span>
+                        Resources
+                    </a>
+<a class="pb-3 text-zinc-500 hover:text-black font-label text-label uppercase tracking-widest border-b-2 border-transparent hover:border-zinc-300 transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">table_chart</span>
+                        Comparison View
+                    </a>
+<a class="pb-3 text-zinc-500 hover:text-black font-label text-label uppercase tracking-widest border-b-2 border-transparent hover:border-zinc-300 transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">notes</span>
+                        Notes
+                    </a>
+</div>
+<!-- Resources Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white border border-zinc-200 rounded p-6 hover:border-zinc-400 transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-1 text-[#FF500F]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<button class="text-zinc-400 hover:text-black opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 text-black mb-1 leading-tight">MacBook Air M2</h3>
+<a class="text-zinc-500 text-sm font-body-md hover:text-black hover:underline flex items-center gap-1 mb-6 truncate block w-full" href="#">
+<span class="material-symbols-outlined text-[12px]">link</span> apple.com/in/macbook-air-m2
+                        </a>
+<div class="space-y-4">
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-green-600">add_circle</span> Pros</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Exceptional battery life</li>
+<li>M2 chip performance</li>
+<li>Premium build quality</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-red-600">do_not_disturb_on</span> Cons</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Base model storage (256GB)</li>
+<li>60Hz display</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-zinc-200 rounded p-6 hover:border-zinc-400 transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-1 text-[#FF500F]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<button class="text-zinc-400 hover:text-black opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 text-black mb-1 leading-tight">ASUS ROG Zephyrus G14</h3>
+<a class="text-zinc-500 text-sm font-body-md hover:text-black hover:underline flex items-center gap-1 mb-6 truncate block w-full" href="#">
+<span class="material-symbols-outlined text-[12px]">link</span> asus.com/in/laptops/for-gaming/rog-zephyrus
+                        </a>
+<div class="space-y-4">
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-green-600">add_circle</span> Pros</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Powerful GPU for gaming</li>
+<li>Compact 14-inch form factor</li>
+<li>Excellent 120Hz screen</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-red-600">do_not_disturb_on</span> Cons</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Runs hot under load</li>
+<li>No webcam on some models</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-zinc-200 rounded p-6 hover:border-zinc-400 transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-1 text-[#FF500F]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<button class="text-zinc-400 hover:text-black opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+<h3 class="font-h3 text-h3 text-black mb-1 leading-tight">Lenovo Legion 5 Pro</h3>
+<a class="text-zinc-500 text-sm font-body-md hover:text-black hover:underline flex items-center gap-1 mb-6 truncate block w-full" href="#">
+<span class="material-symbols-outlined text-[12px]">link</span> lenovo.com/in/en/legion
+                        </a>
+<div class="space-y-4">
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-green-600">add_circle</span> Pros</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Superb 16:10 QHD display</li>
+<li>High TGP GPU performance</li>
+<li>Great thermal management</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-label text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[12px] text-red-600">do_not_disturb_on</span> Cons</h4>
+<ul class="font-body-md text-sm text-zinc-700 list-disc pl-4 space-y-1">
+<li>Heavy and bulky</li>
+<li>Massive power brick</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Add New Card -->
+<button class="border border-dashed border-zinc-300 rounded p-6 flex flex-col items-center justify-center text-zinc-500 hover:bg-zinc-50 hover:text-black hover:border-zinc-400 transition-colors min-h-[320px]">
+<span class="material-symbols-outlined text-4xl mb-2">add</span>
+<span class="font-label text-label uppercase tracking-widest">Add Resource</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>
