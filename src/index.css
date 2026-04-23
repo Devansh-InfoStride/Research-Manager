@@ -1,1 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #dadada;
+  --color-surface-bright: #f9f9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f3f3;
+  --color-surface-container: #eeeeee;
+  --color-surface-container-high: #e8e8e8;
+  --color-surface-container-highest: #e2e2e2;
+  --color-on-surface: #1b1b1b;
+  --color-on-surface-variant: #5c4038;
+  --color-inverse-surface: #303030;
+  --color-inverse-on-surface: #f1f1f1;
+  --color-outline: #917066;
+  --color-outline-variant: #e5beb3;
+  --color-surface-tint: #af3100;
+  --color-primary: #aa2f00;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d53d00;
+  --color-on-primary-container: #fffbff;
+  --color-inverse-primary: #ffb59f;
+  --color-secondary: #625f4d;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e8e3cc;
+  --color-on-secondary-container: #686553;
+  --color-tertiary: #8b4c00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #ac620e;
+  --color-on-tertiary-container: #fffbff;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #ffdbd1;
+  --color-primary-fixed-dim: #ffb59f;
+  --color-on-primary-fixed: #3a0a00;
+  --color-on-primary-fixed-variant: #852300;
+  --color-secondary-fixed: #e8e3cc;
+  --color-secondary-fixed-dim: #ccc7b1;
+  --color-on-secondary-fixed: #1e1c0e;
+  --color-on-secondary-fixed-variant: #4a4737;
+  --color-tertiary-fixed: #ffdcc1;
+  --color-tertiary-fixed-dim: #ffb779;
+  --color-on-tertiary-fixed: #2e1500;
+  --color-on-tertiary-fixed-variant: #6c3a00;
+  --color-background: #f9f9f9;
+  --color-on-background: #1b1b1b;
+  --color-surface-variant: #e2e2e2;
+  --color-accent-orange: #FF500F;
+  --color-brand-background: #F9F3DC;
+
+  --font-h1: "Space Grotesk", sans-serif;
+  --font-h2: "Space Grotesk", sans-serif;
+  --font-h3: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-code: "Inter", monospace;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-background text-on-surface font-body antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-h1 tracking-tight;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
