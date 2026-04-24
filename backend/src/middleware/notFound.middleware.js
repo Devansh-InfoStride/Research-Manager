@@ -1,4 +1,4 @@
-export const notFoundMiddleware = (req, res, next) => {
+export const notFoundMiddleware = (req, res) => {
   res.status(404).json({
     status: 'fail',
     message: `Can't find ${req.originalUrl} on this server!`,

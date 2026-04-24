@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Plus, Database, FolderOpen, MoreVertical } from 'lucide-react';
 import { getProjects } from '../../../services/api/projects.api';
 import { Link } from 'react-router-dom';
@@ -58,12 +58,6 @@ const ProjectsPage = () => {
 };
 
 const ProjectCard = ({ project }) => {
-  const statusColors = {
-    active: 'bg-primary-fixed text-on-primary-fixed',
-    completed: 'bg-surface-container-high text-on-surface',
-    draft: 'bg-surface-container-low text-on-surface-variant',
-  };
-
   return (
     <Link to={`/projects/${project.id}`} className="bg-white border border-zinc-200 rounded-lg p-6 flex flex-col justify-between h-64 hover:border-black transition-colors cursor-pointer group relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[2px] bg-accent-orange scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>

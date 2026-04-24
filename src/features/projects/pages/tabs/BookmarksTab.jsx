@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Star, Link as LinkIcon, Plus, MoreHorizontal } from 'lucide-react';
 import client from '../../../../services/api/client';
 
@@ -9,9 +9,7 @@ const BookmarksTab = ({ projectId }) => {
     const fetchBookmarks = async () => {
       try {
         const response = await client.get(`/bookmarks?projectId=${projectId}`);
-        // Filter for this project if backend doesn't handle it yet
-        const filtered = response.data.data.bookmarks.filter(b => b.project_id === parseInt(projectId));
-        setBookmarks(filtered);
+        setBookmarks(response.data.data.bookmarks);
       } catch (error) {
         console.error(error);
       }

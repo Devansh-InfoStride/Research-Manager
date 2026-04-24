@@ -24,7 +24,7 @@ export const protect = async (req, res, next) => {
 
     req.user = user;
     next();
-  } catch (error) {
+  } catch {
     res.status(401).json({ message: 'Invalid token' });
   }
 };

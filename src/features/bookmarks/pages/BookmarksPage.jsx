@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Search, Download, Star, ExternalLink, MoreHorizontal } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Search, Download, Star, ExternalLink } from 'lucide-react';
 import client from '../../../services/api/client';
 
 const BookmarksPage = () => {
   const [bookmarks, setBookmarks] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookmarks = async () => {
@@ -13,8 +12,6 @@ const BookmarksPage = () => {
         setBookmarks(response.data.data.bookmarks);
       } catch (error) {
         console.error('Error fetching bookmarks:', error);
-      } finally {
-        setLoading(false);
       }
     };
 

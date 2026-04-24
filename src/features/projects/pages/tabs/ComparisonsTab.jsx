@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ComparisonsTab = () => {
   return (
     <div className="bg-white border border-zinc-200 rounded-lg overflow-hidden">

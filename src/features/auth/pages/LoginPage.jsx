@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import client from '../../../services/api/client';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const LoginPage = () => {
       localStorage.setItem('token', response.data.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.data.user));
       navigate('/');
-    } catch (err) {
+    } catch {
       setError('Invalid credentials');
     }
   };

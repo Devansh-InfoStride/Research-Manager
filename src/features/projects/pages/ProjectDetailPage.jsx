@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProject } from '../../../services/api/projects.api';
 import { 
   Bookmark, 
   TableProperties, 
   StickyNote, 
-  ChevronRight,
-  RefreshCw,
-  FolderOpen
+  ChevronRight
 } from 'lucide-react';
 import { clsx } from 'clsx';
 // For now, I'll just put the sub-components in the same file to be quick

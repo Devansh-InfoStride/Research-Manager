@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../../Components/layout/Sidebar';
 import { Search, Share, Download, Bell, Settings } from 'lucide-react';
