@@ -7,5 +7,6 @@ const router = express.Router();
 router.use(protect);
 
 router.get('/', bookmarksController.getAllBookmarks);
+router.post('/', bookmarksController.createBookmark);
 
 export default router;

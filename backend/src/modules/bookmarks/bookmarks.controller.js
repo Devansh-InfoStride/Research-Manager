@@ -9,3 +9,20 @@ export const getAllBookmarks = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createBookmark = async (req, res, next) => {
+  try {
+    const { title, url, type, rating, projectId } = req.body;
+    const bookmark = await bookmarksService.createBookmark({
+      title,
+      url,
+      type,
+      rating,
+      projectId,
+      userId: req.user.id
+    });
+    res.status(201).json({ status: 'success', data: { bookmark } });
+  } catch (error) {
+    next(error);
+  }
+};
