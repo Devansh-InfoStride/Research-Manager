@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import Sidebar from '../../Components/layout/Sidebar';
 import { Search, Share, Download, Bell, Settings } from 'lucide-react';
 
@@ -18,8 +18,8 @@ const AppLayout = () => {
               />
             </div>
             <nav className="hidden lg:flex gap-8 font-label text-xs font-medium uppercase tracking-widest">
-              <a href="#" className="text-accent-orange border-b border-accent-orange pb-1">Active Projects</a>
-              <a href="#" className="text-zinc-500 hover:text-black transition-colors">Global Metrics</a>
+              <Link to="/projects" className="text-zinc-500 hover:text-black transition-colors">Active Projects</Link>
+              <Link to="/" className="text-accent-orange border-b border-accent-orange pb-1">Global Metrics</Link>
             </nav>
           </div>
 

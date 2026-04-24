@@ -18,3 +18,12 @@ export const getAllBookmarks = async (userId, projectId = null) => {
     ORDER BY b.created_at DESC
   `;
 };
+
+export const createBookmark = async ({ title, url, type, rating, projectId, userId }) => {
+  const [bookmark] = await sql`
+    INSERT INTO bookmarks (title, url, type, rating, project_id, user_id)
+    VALUES (${title}, ${url}, ${type}, ${rating}, ${projectId}, ${userId})
+    RETURNING *
+  `;
+  return bookmark;
+};

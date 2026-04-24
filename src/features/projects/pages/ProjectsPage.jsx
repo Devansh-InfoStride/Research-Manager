@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import { Plus, Database, FolderOpen, MoreVertical } from 'lucide-react';
 import { getProjects } from '../../../services/api/projects.api';
 import { Link } from 'react-router-dom';
+import CreateProjectForm from '../components/CreateProjectForm';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('All'); // 'All', 'Review', 'Archived'
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -22,38 +25,69 @@ const ProjectsPage = () => {
     fetchProjects();
   }, []);
 
+  const handleProjectCreated = (newProject) => {
+    setProjects([newProject, ...projects]);
+  };
+
+  const filteredProjects = projects.filter((project) => {
+    if (filter === 'All') return project.status !== 'archived';
+    if (filter === 'Review') return project.status === 'review';
+    if (filter === 'Archived') return project.status === 'archived';
+    return true;
+  });
+
+  const getTabClass = (tabName) => {
+    const isActive = filter === tabName;
+    return `font-label text-label uppercase tracking-widest px-2 pb-2 transition-colors ${
+      isActive 
+        ? 'text-on-background border-b-2 border-on-background' 
+        : 'text-on-surface-variant hover:text-on-background border-b-2 border-transparent'
+    }`;
+  };
+
   return (
-    <div className="max-w-[1440px] mx-auto px-12 py-12">
-      <div className="flex justify-between items-end mb-8">
-        <div>
-          <h2 className="font-h1 text-h1 text-on-background mb-1">Projects</h2>
-          <p className="font-body text-body text-on-surface-variant">Manage and track your active research initiatives.</p>
+    <>
+      <div className="max-w-[1440px] mx-auto px-12 py-12">
+        <div className="flex justify-between items-end mb-8">
+          <div>
+            <h2 className="font-h1 text-h1 text-on-background mb-1">Projects</h2>
+            <p className="font-body text-body text-on-surface-variant">Manage and track your active research initiatives.</p>
+          </div>
+          <button 
+            onClick={() => setIsFormOpen(true)}
+            className="bg-black text-white font-label text-label uppercase px-6 py-3 rounded hover:opacity-90 transition-opacity flex items-center gap-2 h-fit"
+          >
+            <Plus size={18} />
+            Create New Project
+          </button>
         </div>
-        <button className="bg-black text-white font-label text-label uppercase px-6 py-3 rounded hover:opacity-90 transition-opacity flex items-center gap-2 h-fit">
-          <Plus size={18} />
-          Create New Project
-        </button>
+
+        <div className="flex gap-8 border-b border-zinc-200 mb-8 pb-2">
+          <button onClick={() => setFilter('All')} className={getTabClass('All')}>All Projects</button>
+          <button onClick={() => setFilter('Review')} className={getTabClass('Review')}>Requires Review</button>
+          <button onClick={() => setFilter('Archived')} className={getTabClass('Archived')}>Archived</button>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
       </div>
 
-      <div className="flex gap-8 border-b border-zinc-200 mb-8 pb-2">
-        <button className="font-label text-label uppercase tracking-widest text-on-background border-b-2 border-on-background px-2 pb-2">All Projects</button>
-        <button className="font-label text-label uppercase tracking-widest text-on-surface-variant hover:text-on-background px-2 pb-2 transition-colors">Requires Review</button>
-        <button className="font-label text-label uppercase tracking-widest text-on-surface-variant hover:text-on-background px-2 pb-2 transition-colors">Archived</button>
-      </div>
-
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-          {/* Empty state or Add button could go here */}
-        </div>
+      {isFormOpen && (
+        <CreateProjectForm 
+          onClose={() => setIsFormOpen(false)} 
+          onSuccess={handleProjectCreated}
+        />
       )}
-    </div>
+    </>
   );
 };
 
