@@ -1,22 +1,40 @@
 import { useEffect, useState } from 'react';
 import { Search, Download, Star, ExternalLink } from 'lucide-react';
-import client from '../../../services/api/client';
+import { getAllBookmarks } from '../../../services/api/bookmarks.api';
+import { getProjects } from '../../../services/api/projects.api';
 
 const BookmarksPage = () => {
   const [bookmarks, setBookmarks] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedProjectId, setSelectedProjectId] = useState('all');
 
   useEffect(() => {
-    const fetchBookmarks = async () => {
+    const fetchData = async () => {
       try {
-        const response = await client.get('/bookmarks');
-        setBookmarks(response.data.data.bookmarks);
+        const [bookmarksData, projectsRes] = await Promise.all([
+          getAllBookmarks(),
+          getProjects()
+        ]);
+        setBookmarks(bookmarksData);
+        setProjects(projectsRes.data.projects);
       } catch (error) {
         console.error('Error fetching bookmarks:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchBookmarks();
+    fetchData();
   }, []);
+
+  const filteredBookmarks = bookmarks.filter(b => {
+    const matchesSearch = b.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         b.url.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesProject = selectedProjectId === 'all' || b.project_id.toString() === selectedProjectId;
+    return matchesSearch && matchesProject;
+  });
 
   return (
     <div className="flex flex-col min-h-full">
@@ -25,7 +43,10 @@ const BookmarksPage = () => {
           <h2 className="font-h1 text-h1 text-on-surface mb-1">Bookmarks Library</h2>
           <p className="font-body text-on-surface-variant max-w-2xl">Global repository of saved resources, categorized by project and technical rating.</p>
         </div>
-        <button className="px-6 py-2 border border-zinc-200 text-on-surface font-label text-xs uppercase tracking-widest hover:bg-zinc-100 transition-colors flex items-center gap-2">
+        <button 
+          onClick={() => alert('Exporting to CSV...')}
+          className="px-6 py-2 border border-zinc-200 text-on-surface font-label text-xs uppercase tracking-widest hover:bg-zinc-100 transition-colors flex items-center gap-2"
+        >
           <Download size={16} />
           Export CSV
         </button>
@@ -38,19 +59,25 @@ const BookmarksPage = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
               <input 
                 placeholder="Search resources..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 bg-zinc-50 border border-zinc-200 font-body text-sm outline-none focus:border-black"
               />
             </div>
             <div className="w-px h-6 bg-zinc-200"></div>
-            <select className="bg-zinc-50 border border-zinc-200 px-4 py-2 font-label text-xs uppercase tracking-widest outline-none cursor-pointer">
-              <option>All Projects</option>
-              <option>Frontend Eval</option>
-              <option>DB Scaling</option>
-              <option>Design Systems</option>
+            <select 
+              value={selectedProjectId}
+              onChange={(e) => setSelectedProjectId(e.target.value)}
+              className="bg-zinc-50 border border-zinc-200 px-4 py-2 font-label text-xs uppercase tracking-widest outline-none cursor-pointer"
+            >
+              <option value="all">All Projects</option>
+              {projects.map(p => (
+                <option key={p.id} value={p.id}>{p.name}</option>
+              ))}
             </select>
           </div>
           <div className="font-label text-xs uppercase tracking-widest text-zinc-500">
-            Showing {bookmarks.length} Results
+            Showing {filteredBookmarks.length} Results
           </div>
         </div>
 
@@ -66,21 +93,27 @@ const BookmarksPage = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100 font-body text-sm">
-              {bookmarks.length === 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="5" className="py-12 text-center">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-black mx-auto"></div>
+                  </td>
+                </tr>
+              ) : filteredBookmarks.length === 0 ? (
                 <tr>
                   <td colSpan="5" className="py-12 text-center text-zinc-500">
-                    No bookmarks found. Seed the database to see example data.
+                    No bookmarks found matching your criteria.
                   </td>
                 </tr>
               ) : (
-                bookmarks.map((bookmark) => (
+                filteredBookmarks.map((bookmark) => (
                   <tr key={bookmark.id} className="hover:bg-zinc-50 transition-colors group">
                     <td className="py-4 px-6">
                       <div className="font-medium text-on-surface">{bookmark.title}</div>
                       <div className="text-xs text-zinc-500 mt-1">{bookmark.type}</div>
                     </td>
                     <td className="py-4 px-6">
-                      <a href={bookmark.url} className="text-primary hover:underline flex items-center gap-1 font-code">
+                      <a href={bookmark.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1 font-code">
                         <ExternalLink size={12} />
                         {bookmark.url}
                       </a>
